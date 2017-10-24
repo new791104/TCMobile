@@ -7,10 +7,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
@@ -29,6 +32,18 @@ public class MainActivity extends AppCompatActivity {
         //關閉系統狀態列
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        /*
+         * ImageLoader
+         */
+        ImageView SPO2 = (ImageView) findViewById(R.id.image);
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this)
+			.build();
+        ImageLoader imageLoader = ImageLoader.getInstance();
+        imageLoader.init(config);
+        imageLoader.displayImage("http://xenon.ym.edu.tw/spo2/drawspo2.php?xid=00920040&date=10/12&type=chart", SPO2);
+        /*
+         * ButtomBar
+         */
         BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
