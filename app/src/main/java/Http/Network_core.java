@@ -40,8 +40,8 @@ public class Network_core{
     }
 
     /**
-     * 查詢使用者所有的按鈕
-     * @param user 使用者名稱
+     * 查詢K&Y Server資料
+     * @param dataType 資料所屬類別
      * @return    void
      */
 

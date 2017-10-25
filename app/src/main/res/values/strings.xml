@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TCMobile</string>
+    <string name="title_section1">HRV</string>
+    <string name="title_section2">spO2</string>
+    <string name="title_section3">N/A</string>
+    <string name="title_section4">N/A</string>
 </resources>

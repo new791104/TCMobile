@@ -6,72 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@color/context"
     tools:openDrawer="start">
-
-    <!--<TextView-->
-        <!--android:id="@+id/HR"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="HR"-->
-        <!--android:textSize="24dp"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.291"-->
-        <!--app:layout_constraintLeft_toLeftOf="parent"-->
-        <!--app:layout_constraintRight_toRightOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--app:layout_constraintVertical_bias="0.133" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/V"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="V"-->
-        <!--android:textSize="24dp"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.288"-->
-        <!--app:layout_constraintLeft_toLeftOf="parent"-->
-        <!--app:layout_constraintRight_toRightOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--app:layout_constraintVertical_bias="0.158" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/PA"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="PA"-->
-        <!--android:textSize="24dp"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.291"-->
-        <!--app:layout_constraintLeft_toLeftOf="parent"-->
-        <!--app:layout_constraintRight_toRightOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--app:layout_constraintVertical_bias="0.182" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/TE"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="TE"-->
-        <!--android:textSize="24dp"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.291"-->
-        <!--app:layout_constraintLeft_toLeftOf="parent"-->
-        <!--app:layout_constraintRight_toRightOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--app:layout_constraintVertical_bias="0.212" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/Bat"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Bat"-->
-        <!--android:textSize="24dp"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintLeft_toLeftOf="parent"-->
-        <!--app:layout_constraintRight_toRightOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.293"-->
-        <!--app:layout_constraintVertical_bias="0.244" />-->
 
     <!-- This could be your fragment container, or something -->
     <!--<FrameLayout-->
@@ -79,13 +15,29 @@
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="match_parent"-->
         <!--android:layout_above="@+id/bottomBar" />-->
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:layout_margin="6dp"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop" />
+
+
+    <!-- BEGIN_INCLUDE (view_pager_layout) -->
+    <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity" />
+    <!-- END_INCLUDE (view_pager_layout) -->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/image"-->
+        <!--android:layout_width="72dp"-->
+        <!--android:layout_height="72dp"-->
+        <!--android:adjustViewBounds="true"-->
+        <!--android:scaleType="centerCrop"-->
+        <!--android:layout_marginLeft="6dp"-->
+        <!--android:layout_marginRight="6dp"-->
+        <!--android:layout_above="@+id/bottomBar"-->
+        <!--android:layout_alignStart="@+id/bottomBar"-->
+        <!--android:layout_marginStart="9dp"-->
+        <!--android:layout_marginBottom="276dp" />-->
 
     <com.roughike.bottombar.BottomBar
         android:id="@+id/bottomBar"

@@ -6,14 +6,34 @@ package Objects;
 
 public class HRV {
     private double HR, VAR, PA, TE, BAT;
+    private String ID, date;
 
-    public HRV(double hr, double v, double pa, double te, double bat) {
+    public HRV(String id, String dat, double hr, double v, double pa, double te, double bat) {
+        ID = id;
+        date = dat;
         HR = hr;
         VAR = v;
         PA = pa;
         TE = te;
         BAT = bat;
     }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String id) {
+        ID = id;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String dat) {
+        date = dat;
+    }
+
     public double getHR() {
         return HR;
     }
@@ -55,3 +75,4 @@ public class HRV {
     }
 
 }
+

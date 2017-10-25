@@ -3,4 +3,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorBlack">#000000</color>
+
+    <color name="main">#FFF4C9</color>
+    <color name="second">#C7E78B</color>
+    <color name="event">#81AE64</color>
+    <color name="frame">#709053</color>
+
+    <color name="context">#FCF4D9</color>
 </resources>
