@@ -4,6 +4,7 @@ package Fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,8 +58,12 @@ public class HRVSectionFragment extends Fragment implements ViewFactory {
         return verticalPager;
     }
 
+    /*
+     * 會在 vertical - 1 生成 View
+     */
     @Override
     public View makeView(int vertical, int horizontal) {
+        Log.e("debug", "vertical: " + vertical);
         if (vertical == -1) {
             View rootView = mInflater.inflate(R.layout.fragment_hrv, mViewGroup, false);
             return getHRV_text(rootView);
