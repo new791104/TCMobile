@@ -5,10 +5,10 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorBlack">#000000</color>
 
-    <color name="main">#FFF4C9</color>
-    <color name="second">#C7E78B</color>
-    <color name="event">#81AE64</color>
-    <color name="frame">#709053</color>
+    <color name="main">#FAFAFA</color>
+    <color name="second">#E8F1F5</color>
+    <color name="event">#005691</color>
+    <color name="frame">#004A7C</color>
 
-    <color name="context">#FCF4D9</color>
+    <color name="context">#E8F1F5</color>
 </resources>

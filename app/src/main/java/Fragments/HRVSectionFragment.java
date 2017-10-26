@@ -58,13 +58,10 @@ public class HRVSectionFragment extends Fragment implements ViewFactory {
         return verticalPager;
     }
 
-    /*
-     * 會在 vertical - 1 生成 View
-     */
     @Override
     public View makeView(int vertical, int horizontal) {
         Log.e("debug", "vertical: " + vertical);
-        if (vertical == -1) {
+        if (vertical == 0) {
             View rootView = mInflater.inflate(R.layout.fragment_hrv, mViewGroup, false);
             return getHRV_text(rootView);
         }
