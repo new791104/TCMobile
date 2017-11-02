@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -14,6 +15,7 @@ import Fragments.DataSectionFragment;
 import Fragments.DummySectionFragment;
 import Fragments.HRVSectionFragment;
 import Fragments.SPO2SectionFragment;
+import Global.GV;
 import pllab.tcmobile.R;
 
 /**
@@ -44,21 +46,20 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // below) with the page number as its lone argument.
         Fragment fragment = new DataSectionFragment();
         Bundle args = new Bundle();
+        //Toast.makeText(context, ""+position, Toast.LENGTH_SHORT).show();
         switch (position){
             case 0:
-                fragment = new HRVSectionFragment(context);
+                fragment = new DummySectionFragment();
                 break;
             case 1:
-                fragment = new SPO2SectionFragment(context);
+                //fragment = new HRVSectionFragment(context);
+                fragment = new DummySectionFragment();
                 break;
             case 2:
                 fragment = new DummySectionFragment();
                 break;
-            case 3:
-                fragment = new DummySectionFragment();
-                break;
         }
-        args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
+        args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position);
         fragment.setArguments(args);
         return fragment;
     }
@@ -73,7 +74,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         // Show 3 total pages.
-        return 4;
+        return GV.totalPage;
     }
     // END_INCLUDE (fragment_pager_adapter_getcount)
 

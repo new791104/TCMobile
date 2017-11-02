@@ -58,10 +58,13 @@ public class HRVSectionFragment extends Fragment implements ViewFactory {
         return verticalPager;
     }
 
+    /*
+     * 會在 vertical - 1 生成 View
+     */
     @Override
     public View makeView(int vertical, int horizontal) {
         Log.e("debug", "vertical: " + vertical);
-        if (vertical == 0) {
+        if (vertical == -1) {
             View rootView = mInflater.inflate(R.layout.fragment_hrv, mViewGroup, false);
             return getHRV_text(rootView);
         }
@@ -78,32 +81,18 @@ public class HRVSectionFragment extends Fragment implements ViewFactory {
     private View getHRV_text(View rootView) {
 
         final HRV[] resHRV = new HRV[1];
-        final TextView Date_text = (TextView) rootView.findViewById(R.id.Date);
-        final TextView DeviceID_text = (TextView) rootView.findViewById(R.id.DeviceID);
-        final TextView HR_text = (TextView) rootView.findViewById(R.id.HR);
-        final TextView V_text = (TextView) rootView.findViewById(R.id.V);
-        final TextView PA_text = (TextView) rootView.findViewById(R.id.PA);
-        final TextView TE_text = (TextView) rootView.findViewById(R.id.TE);
-        final TextView Bat_text = (TextView) rootView.findViewById(R.id.Bat);
 
-        nCore.requestKY("HRV");
-        nCore.setCallback(new Network_core.netCallback() {
-
-            @Override
-            public String response(String response) {
-                Gson gson = new Gson();
-                resHRV[0] = gson.fromJson(response, new TypeToken<HRV>(){}.getType());
-
-                Date_text.setText(resHRV[0].getDate() + "");
-                DeviceID_text.setText(resHRV[0].getID() + "");
-                HR_text.setText(resHRV[0].getHR() + "");
-                V_text.setText(resHRV[0].getVAR() + "");
-                PA_text.setText(resHRV[0].getPA() + "");
-                TE_text.setText(resHRV[0].getTE() + " ℃");
-                Bat_text.setText(resHRV[0].getBAT() + " v");
-                return null;
-            }
-        });
+//        nCore.requestKY("HRV");
+//        nCore.setCallback(new Network_core.netCallback() {
+//
+//            @Override
+//            public String response(String response) {
+//                Gson gson = new Gson();
+//                resHRV = gson.fromJson(response, new TypeToken<HRV>(){}.getType());
+//
+//                return null;
+//            }
+//        });
         return rootView;
     }
 }

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main">
+
+        <ImageButton
+            android:id="@+id/spo2_ImageButton"
+            android:layout_width="148dp"
+            android:layout_height="148dp"
+            android:background="@color/second"
+            app:srcCompat="@drawable/spo2_select_prime128"
+            android:layout_marginTop="158dp"
+            android:layout_marginRight="17dp"
+            android:layout_marginEnd="17dp"
+            android:foregroundGravity="right"
+            android:layout_below="@+id/Selection_title"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <ImageButton
+            android:id="@+id/hrv_ImageButton"
+            android:layout_width="148dp"
+            android:layout_height="148dp"
+            android:background="@color/second"
+            app:srcCompat="@drawable/hrv_select_prime128"
+            android:layout_alignTop="@+id/spo2_ImageButton"
+            android:layout_toLeftOf="@+id/spo2_ImageButton"
+            android:layout_toStartOf="@+id/spo2_ImageButton"
+            android:layout_marginRight="23dp"
+            android:layout_marginEnd="23dp" />
+
+        <TextView
+            android:id="@+id/Selection_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="服務項目"
+            android:textSize="36sp"
+            android:layout_marginTop="55dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

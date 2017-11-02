@@ -1,78 +1,125 @@
 package Objects;
-
 /**
  * Created by charlie on 2017/10/25.
+ * HRV Class, 12 arguments
  */
 
 public class HRV {
-    private double HR, VAR, PA, TE, BAT;
-    private String ID, date;
+    private double RR, SD, TP, VL, LF, HF, LFP, HFP, VAR, LHR, WL;
+    private String timetrap;
 
-    public HRV(String id, String dat, double hr, double v, double pa, double te, double bat) {
-        ID = id;
-        date = dat;
-        HR = hr;
-        VAR = v;
-        PA = pa;
-        TE = te;
-        BAT = bat;
+    public HRV(String timetrap, double rR, double sD, double tP, double vL, double lF, double hF, double lFP, double hFP, double vAR,
+               double lHR, double wL) {
+        super();
+        RR = rR;
+        SD = sD;
+        TP = tP;
+        VL = vL;
+        LF = lF;
+        HF = hF;
+        LFP = lFP;
+        HFP = hFP;
+        VAR = vAR;
+        LHR = lHR;
+        WL = wL;
+        this.timetrap = timetrap;
     }
 
-    public String getID() {
-        return ID;
+    public double getRR() {
+        return RR;
     }
 
-    public void setID(String id) {
-        ID = id;
+    public void setRR(double rR) {
+        RR = rR;
     }
 
-    public String getDate() {
-        return date;
+    public double getSD() {
+        return SD;
     }
 
-    public void setDate(String dat) {
-        date = dat;
+    public void setSD(double sD) {
+        SD = sD;
     }
 
-    public double getHR() {
-        return HR;
+    public double getTP() {
+        return TP;
     }
 
-    public void setHR(double hR) {
-        HR = hR;
+    public void setTP(double tP) {
+        TP = tP;
+    }
+
+    public double getVL() {
+        return VL;
+    }
+
+    public void setVL(double vL) {
+        VL = vL;
+    }
+
+    public double getLF() {
+        return LF;
+    }
+
+    public void setLF(double lF) {
+        LF = lF;
+    }
+
+    public double getHF() {
+        return HF;
+    }
+
+    public void setHF(double hF) {
+        HF = hF;
+    }
+
+    public double getLFP() {
+        return LFP;
+    }
+
+    public void setLFP(double lFP) {
+        LFP = lFP;
+    }
+
+    public double getHFP() {
+        return HFP;
+    }
+
+    public void setHFP(double hFP) {
+        HFP = hFP;
     }
 
     public double getVAR() {
         return VAR;
     }
 
-    public void setVAR(double v) {
-        VAR = v;
+    public void setVAR(double vAR) {
+        VAR = vAR;
     }
 
-    public double getPA() {
-        return PA;
+    public double getLHR() {
+        return LHR;
     }
 
-    public void setPA(double pA) {
-        PA = pA;
+    public void setLHR(double lHR) {
+        LHR = lHR;
     }
 
-    public double getTE() {
-        return TE;
+    public double getWL() {
+        return WL;
     }
 
-    public void setTE(double tE) {
-        TE = tE;
+    public void setWL(double wL) {
+        WL = wL;
     }
 
-    public double getBAT() {
-        return BAT;
+    public String getTimetrap() {
+        return timetrap;
     }
 
-    public void setBAT(double bat) {
-        BAT = bat;
+    public void setTimetrap(String timetrap) {
+        this.timetrap = timetrap;
     }
+
 
 }
-

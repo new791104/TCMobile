@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="@color/context"
+    android:background="@color/main"
     tools:openDrawer="start">
 
     <!-- This could be your fragment container, or something -->
@@ -23,7 +23,10 @@
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity" />
+        tools:context="pllab.Activity.MainActivity"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
     <!-- END_INCLUDE (view_pager_layout) -->
 
     <!--<ImageView-->
@@ -44,6 +47,8 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
+        android:background="@color/frame"
+        android:minHeight="@dimen/bottomBar_height"
         app:bb_tabXmlResource="@xml/bottombar_tabs" />
 
 

@@ -28,7 +28,18 @@ public class DummySectionFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_nodata, container, false);
         TextView dummyTextView = (TextView) rootView.findViewById(R.id.section_label);
-        dummyTextView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
+        switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
+            case 0:
+                dummyTextView.setText("設定頁面");
+                break;
+            case 1:
+                dummyTextView.setText("表單");
+                break;
+            case 2:
+                dummyTextView.setText("圖表");
+                break;
+        }
+
         return rootView;
     }
 }

@@ -11,6 +11,8 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 import com.zhy.http.okhttp.request.RequestCall;
 
+import org.joda.time.LocalDate;
+
 import okhttp3.Call;
 import okhttp3.MediaType;
 
@@ -45,9 +47,9 @@ public class Network_core{
      * @return    void
      */
 
-    public void requestKY(String dataType) {
-        Log.e("debug", "in requestKY");
-        String url = SERVER_HOST + "/JSoup?dataType=" + dataType;
+    public void ServerReq(String dataType, String uid, String xid, LocalDate startDate, LocalDate endDate) {
+        Log.e("debug", "in ServerReq");
+        String url = SERVER_HOST + "/app?dataType=" + dataType + "&uid=" + uid + "&xid=" + xid + "&startDate=" + startDate + "&endDate=" + endDate;
         Log.e("test url", url);
         mcall = mokHttpClient
                 .get()
@@ -62,7 +64,7 @@ public class Network_core{
 
             @Override
             public void onResponse(String response, int id) {
-                Log.e("requestKY:", response);
+                Log.e("ServerReq:", response);
                 mCallback.response(response);
             }
         });

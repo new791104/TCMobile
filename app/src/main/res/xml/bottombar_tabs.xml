@@ -1,8 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <tabs>
     <tab
-        id="@+id/tab_favorites"
-        icon="@mipmap/ic_launcher"
-        title="Favorites"
-        barColorWhenSelected="@color/event" />
-    <!-- You can use @color resources too! -->
+        id="@+id/tab_setQuery"
+        icon="@drawable/usersetting_black24"
+        title="setting"
+        barColorWhenSelected="@color/frame"/>
+    <tab
+        id="@+id/tab_healthList"
+        icon="@drawable/paperlist_black24"
+        title="List"
+        barColorWhenSelected="@color/frame"/>
+    <tab
+        id="@+id/tab_healthReport"
+        icon="@drawable/health_report_black24"
+        title="Histogram"
+        barColorWhenSelected="@color/frame"/>
 </tabs>
