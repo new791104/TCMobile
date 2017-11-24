@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -19,7 +18,9 @@ import pllab.tcmobile.R;
  * Created by charlie on 2017/10/25.
  */
 
-public class SPO2SectionFragment extends Fragment {
+// TODO 以圖表形式呈現資料
+
+public class HistogramFragment extends Fragment {
     /**
      * The fragment argument representing the section number for this
      * fragment.
@@ -28,14 +29,14 @@ public class SPO2SectionFragment extends Fragment {
     private Context context;
     private Network_core nCore;
 
-    public SPO2SectionFragment(Context nContext) {
+    public HistogramFragment(Context nContext) {
         context = nContext;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_spo2, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_histogram, container, false);
 
         /*
          * ImageLoader

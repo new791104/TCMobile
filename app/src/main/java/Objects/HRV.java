@@ -6,9 +6,9 @@ package Objects;
 
 public class HRV {
     private double RR, SD, TP, VL, LF, HF, LFP, HFP, VAR, LHR, WL;
-    private String timetrap;
+    private String timestrap;
 
-    public HRV(String timetrap, double rR, double sD, double tP, double vL, double lF, double hF, double lFP, double hFP, double vAR,
+    public HRV(String timestrap, double rR, double sD, double tP, double vL, double lF, double hF, double lFP, double hFP, double vAR,
                double lHR, double wL) {
         super();
         RR = rR;
@@ -22,7 +22,7 @@ public class HRV {
         VAR = vAR;
         LHR = lHR;
         WL = wL;
-        this.timetrap = timetrap;
+        this.timestrap = timestrap;
     }
 
     public double getRR() {
@@ -114,11 +114,11 @@ public class HRV {
     }
 
     public String getTimetrap() {
-        return timetrap;
+        return timestrap;
     }
 
-    public void setTimetrap(String timetrap) {
-        this.timetrap = timetrap;
+    public void setTimetrap(String timestrap) {
+        this.timestrap = timestrap;
     }
 
 

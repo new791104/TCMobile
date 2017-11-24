@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/setting_title_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/title_margin"
+        android:text="Query Setting"
+        android:textSize="24sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/setting_spinner_Layout"
+        android:background="@drawable/edge"
+        android:layout_below="@id/setting_title_textView"
+        android:layout_margin="@dimen/textView_margin">
+
+        <TextView
+            android:id="@+id/dataType_textView"
+            android:layout_marginLeft="@dimen/textView_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/title_to_context"
+            android:text="Data Type: " />
+
+        <TextView
+            android:id="@+id/dataEndDate_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/dataType_textView"
+            android:layout_alignStart="@+id/dataStartDate_textView"
+            android:layout_below="@+id/dataStartDate_textView"
+            android:layout_marginTop="@dimen/textView_margin_top"
+            android:text="End Date: " />
+
+        <TextView
+            android:id="@+id/deviceID_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/dataType_textView"
+            android:layout_alignStart="@+id/dataType_textView"
+            android:layout_below="@+id/dataType_textView"
+            android:layout_marginTop="@dimen/textView_margin_top"
+            android:text="Device ID: " />
+
+        <TextView
+            android:id="@+id/dataStartDate_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/dataType_textView"
+            android:layout_alignStart="@+id/deviceID_textView"
+            android:layout_below="@+id/deviceID_textView"
+            android:layout_marginTop="@dimen/textView_margin_top"
+            android:text="Start Date: " />
+
+        <Spinner
+            android:id="@+id/deviceID_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/deviceID_textView"
+            android:layout_toRightOf="@+id/deviceID_textView"
+            android:layout_toEndOf="@+id/deviceID_textView" />
+
+        <Spinner
+            android:id="@+id/dataEndDate_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/dataEndDate_textView"
+            android:layout_toEndOf="@+id/dataEndDate_textView"
+            android:layout_toRightOf="@+id/dataEndDate_textView" />
+
+        <Spinner
+            android:id="@+id/dataType_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/dataType_textView"
+            android:layout_toRightOf="@+id/deviceID_textView" />
+
+        <Spinner
+            android:id="@+id/dataStartDate_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/dataStartDate_textView"
+            android:layout_toEndOf="@+id/dataStartDate_textView"
+            android:layout_toRightOf="@+id/dataStartDate_textView" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/edge"
+        android:layout_margin="@dimen/textView_margin"
+        android:id="@+id/setting_button_layout"
+        android:layout_below="@+id/setting_spinner_Layout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:id="@+id/exit_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="退出"
+            android:layout_alignBaseline="@+id/update_textView"
+            android:layout_alignBottom="@+id/update_textView"
+            android:layout_alignLeft="@+id/logout_Button"
+            android:layout_alignStart="@+id/logout_Button"
+            android:layout_marginLeft="14dp"
+            android:layout_marginStart="14dp" />
+
+        <ImageButton
+            android:id="@+id/update_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="33dp"
+            android:background="@color/main"
+            app:srcCompat="@drawable/update"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/update_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="更新"
+            android:layout_below="@+id/update_Button"
+            android:layout_alignRight="@+id/update_Button"
+            android:layout_alignEnd="@+id/update_Button"
+            android:layout_marginRight="13dp"
+            android:layout_marginEnd="13dp" />
+
+        <ImageButton
+        android:background="@color/main"
+        android:id="@+id/logout_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/exit"
+        android:layout_alignTop="@+id/update_Button"
+        android:layout_toRightOf="@+id/update_Button"
+        android:layout_toEndOf="@+id/update_Button"
+        android:layout_marginLeft="@dimen/image_margin"
+        android:layout_marginStart="@dimen/image_margin" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/invisible_Square"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/setting_button_layout"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/setting_button_layout"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

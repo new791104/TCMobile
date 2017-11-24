@@ -3,17 +3,12 @@ package Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.support.v4.app.Fragment;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import Http.Network_core;
 import Objects.HRV;
@@ -25,7 +20,9 @@ import pro.alexzaitsev.freepager.library.view.infinite.ViewFactory;
  * Created by charlie on 2017/10/25.
  */
 
-public class HRVSectionFragment extends Fragment implements ViewFactory {
+// TODO 先選擇日期再以表單形式呈現資料
+
+public class ListFragment extends Fragment implements ViewFactory {
     /**
      * The fragment argument representing the section number for this
      * fragment.
@@ -37,7 +34,7 @@ public class HRVSectionFragment extends Fragment implements ViewFactory {
     private LayoutInflater mInflater;
     private ViewGroup mViewGroup;
 
-    public HRVSectionFragment(Context nContext) {
+    public ListFragment(Context nContext) {
         context = nContext;
     }
 
@@ -65,7 +62,7 @@ public class HRVSectionFragment extends Fragment implements ViewFactory {
     public View makeView(int vertical, int horizontal) {
         Log.e("debug", "vertical: " + vertical);
         if (vertical == -1) {
-            View rootView = mInflater.inflate(R.layout.fragment_hrv, mViewGroup, false);
+            View rootView = mInflater.inflate(R.layout.fragment_list, mViewGroup, false);
             return getHRV_text(rootView);
         }
         Button btn = new Button(getActivity());

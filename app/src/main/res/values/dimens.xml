@@ -4,5 +4,11 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="textSize">24dp</dimen>
     <dimen name="textView_margin">10dp</dimen>
+    <dimen name="textView_margin_top">24dp</dimen>
+
+    <dimen name="title_to_context">50dp</dimen>
+    <dimen name="title_margin">23dp</dimen>
+
+    <dimen name="image_margin">66dp</dimen>
     <dimen name="bottomBar_height">70dp</dimen>
 </resources>

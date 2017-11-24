@@ -13,8 +13,7 @@ import java.util.Locale;
 
 import Fragments.DataSectionFragment;
 import Fragments.DummySectionFragment;
-import Fragments.HRVSectionFragment;
-import Fragments.SPO2SectionFragment;
+import Fragments.SettingFragment;
 import Global.GV;
 import pllab.tcmobile.R;
 
@@ -49,10 +48,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         //Toast.makeText(context, ""+position, Toast.LENGTH_SHORT).show();
         switch (position){
             case 0:
-                fragment = new DummySectionFragment();
+                fragment = new SettingFragment();
                 break;
             case 1:
-                //fragment = new HRVSectionFragment(context);
                 fragment = new DummySectionFragment();
                 break;
             case 2:
