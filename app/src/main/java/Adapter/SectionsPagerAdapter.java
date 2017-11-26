@@ -48,12 +48,15 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         //Toast.makeText(context, ""+position, Toast.LENGTH_SHORT).show();
         switch (position){
             case 0:
-                fragment = new SettingFragment();
-                break;
-            case 1:
                 fragment = new DummySectionFragment();
                 break;
+            case 1:
+                fragment = new SettingFragment();
+                break;
             case 2:
+                fragment = new DummySectionFragment();
+                break;
+            case 3:
                 fragment = new DummySectionFragment();
                 break;
         }
@@ -71,7 +74,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
      */
     @Override
     public int getCount() {
-        // Show 3 total pages.
+        // Show total pages.
         return GV.totalPage;
     }
     // END_INCLUDE (fragment_pager_adapter_getcount)

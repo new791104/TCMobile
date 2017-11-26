@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <tabs>
     <tab
-        id="@+id/tab_setQuery"
+        id="@+id/tab_userData"
         icon="@drawable/usersetting_black24"
-        title="setting"
+        title="Health"
+        barColorWhenSelected="@color/frame"/>
+    <tab
+        id="@+id/tab_setQuery"
+        icon="@drawable/query_black24"
+        title="Query"
         barColorWhenSelected="@color/frame"/>
     <tab
         id="@+id/tab_healthList"

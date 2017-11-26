@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main">
+
     <com.rengwuxian.materialedittext.MaterialEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:met_floatingLabel="highlight"
         android:hint="身分證字號"
+        android:textSize="24sp"
         android:id="@+id/uid_editText"
         android:layout_alignBaseline="@+id/uid_hint"
         android:layout_alignBottom="@+id/uid_hint"
@@ -36,8 +38,8 @@
         android:layout_height="wrap_content"
         android:text="LOGIN"
         android:textSize="20sp"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="100px"
         android:layout_below="@+id/uid_editText"
         android:layout_centerHorizontal="true" />
 
-</RelativeLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

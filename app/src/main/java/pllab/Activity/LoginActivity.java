@@ -30,15 +30,15 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 EditText uid_text = findViewById(R.id.uid_editText);
-                GV.query.setUserID(uid_text.getText().toString());
+                //GV.query.setUserID(uid_text.getText().toString());
 
-                OpenSelectionActivity(v);
+                OpenMainActivity(v);
             }
         });
     }
 
-    // 開啟 SelectionActivity
-    public void OpenSelectionActivity(View v){
+    // 開啟 MainActivity
+    public void OpenMainActivity(View v){
         Intent intent = new Intent(v.getContext(), MainActivity.class);
         startActivity(intent);
         finish();

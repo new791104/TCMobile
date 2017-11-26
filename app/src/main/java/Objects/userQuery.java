@@ -12,11 +12,11 @@ public class userQuery {
 
     public userQuery() {
         super();
-        this.userID = "no UserID";
-        this.deviceID = "no DeviceID";
-        this.dataType = "no DataType";
-        this.dataStartDate = null;
-        this.dataEndDate = null;
+        this.userID = "F123456789";
+        this.deviceID = null;
+        this.dataType = null;
+        this.dataStartDate = new LocalDate("2017-10-12");
+        this.dataEndDate = new LocalDate("2017-10-13");
     }
 
     public userQuery(String userID, String deviceID, String dataType,LocalDate dataStartDate, LocalDate dataEndDate) {

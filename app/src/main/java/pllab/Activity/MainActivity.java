@@ -25,7 +25,6 @@ import static pllab.tcmobile.R.id.bottomBar;
 
 public class MainActivity extends AppCompatActivity{
 
-    private ViewPager mViewPager;
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private Network_core nCore;
     private boolean lock = false;
@@ -38,9 +37,9 @@ public class MainActivity extends AppCompatActivity{
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), this);
-        mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.requestDisallowInterceptTouchEvent(false);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
+        GV.mViewPager = (ViewPager) findViewById(R.id.pager);
+        GV.mViewPager.requestDisallowInterceptTouchEvent(false);
+        GV.mViewPager.setAdapter(mSectionsPagerAdapter);
 
         /*
          * ButtomBar
@@ -49,28 +48,31 @@ public class MainActivity extends AppCompatActivity{
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelected(@IdRes int tabId) {
-                int position;
+                int position = 0;
                 if (tabId == R.id.tab_setQuery) {
                     // The tab with id R.id.tab_favorites was selected,
                     // change your content accordingly.
-                    position = 0;
-                }
-                else if (tabId == R.id.tab_healthList) {
                     position = 1;
                 }
-                else {
+                else if (tabId == R.id.tab_healthList) {
                     position = 2;
+                }
+                else if (tabId == R.id.tab_healthReport) {
+                    position = 3;
+                }
+                else {
+                    position = 0;
                 }
                 Log.e("debug", "tab position: "+position);
                 if (!lock) {
                     lock = true;
-                    mViewPager.setCurrentItem(position);
+                    GV.mViewPager.setCurrentItem(position);
                     lock = false;
                 }
             }
         });
 
-        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        GV.mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 Log.e("debug", "onPageScrolled: "+position);

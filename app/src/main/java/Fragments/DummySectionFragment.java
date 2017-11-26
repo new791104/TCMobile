@@ -30,12 +30,12 @@ public class DummySectionFragment extends Fragment {
         TextView dummyTextView = (TextView) rootView.findViewById(R.id.section_label);
         switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
             case 0:
-                dummyTextView.setText("設定頁面");
-                break;
-            case 1:
-                dummyTextView.setText("表單");
+                dummyTextView.setText("個人健康診斷");
                 break;
             case 2:
+                dummyTextView.setText("表單");
+                break;
+            case 3:
                 dummyTextView.setText("圖表");
                 break;
         }
