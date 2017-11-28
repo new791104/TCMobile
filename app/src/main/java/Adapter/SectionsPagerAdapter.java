@@ -13,6 +13,7 @@ import java.util.Locale;
 
 import Fragments.DataSectionFragment;
 import Fragments.DummySectionFragment;
+import Fragments.HistogramFragment;
 import Fragments.SettingFragment;
 import Global.GV;
 import pllab.tcmobile.R;
@@ -22,7 +23,6 @@ import pllab.tcmobile.R;
  */
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
-    // END_INCLUDE (fragment_pager_adapter)
     private Context context;
 
     public SectionsPagerAdapter(FragmentManager fm, Context nContext) {
@@ -30,14 +30,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         context = nContext;
     }
 
-    // BEGIN_INCLUDE (fragment_pager_adapter_getitem)
-    /**
-     * Get fragment corresponding to a specific position. This will be used to populate the
-     * contents of the {@link ViewPager}.
-     *
-     * @param position Position to fetch fragment for.
-     * @return Fragment for specified position.
-     */
     @Override
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
@@ -57,7 +49,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 fragment = new DummySectionFragment();
                 break;
             case 3:
-                fragment = new DummySectionFragment();
+                fragment = new HistogramFragment(context);
                 break;
         }
         args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position);

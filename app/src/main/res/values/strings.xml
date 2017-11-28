@@ -5,7 +5,7 @@
     <string name="title_section3">N/A</string>
     <string name="title_section4">N/A</string>
 
-    <!-- Spinner Content 暫時寫在 Clinet 端 之後應該要能從資料庫載入 -->
+    <!-- TODO Spinner Content 暫時寫在 Clinet 端 之後應該要能從資料庫載入 -->
     <string-array name="dataType">
         <item>HRV</item>
         <item>SPO2</item>
@@ -17,6 +17,21 @@
 
     <string-array name="deviceID_SPO2">
         <item>00920040</item>
+    </string-array>
+
+    <!-- TODO Data Fields 暫時寫在 Clinet 端 之後應該要能從資料庫載入 -->
+    <string-array name="hrv_dataFields">
+        <item>RR</item>
+        <item>SD</item>
+        <item>TP</item>
+        <item>VL</item>
+        <item>LF</item>
+        <item>HF</item>
+        <item>LFP</item>
+        <item>HFP</item>
+        <item>VAR</item>
+        <item>LHR</item>
+        <item>WL</item>
     </string-array>
 
 </resources>

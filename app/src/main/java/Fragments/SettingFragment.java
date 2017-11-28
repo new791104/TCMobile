@@ -36,6 +36,7 @@ import Global.GV;
 import Http.Network_core;
 import Objects.HRV;
 import Objects.dataTable;
+import Objects.tableList;
 import pllab.Activity.MainActivity;
 import pllab.tcmobile.R;
 
@@ -202,6 +203,7 @@ public class SettingFragment extends Fragment {
         final LocalDate startdate = GV.query.getDataStartDate();
         final LocalDate enddate = GV.query.getDataEndDate();
         final Gson gson = new Gson();
+        final String[] datatpye = new String[1];
         return new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
@@ -212,18 +214,21 @@ public class SettingFragment extends Fragment {
                     nCore.setCallback(new Network_core.netCallback() {
                         @Override
                         public String response(String response) {
-                            if (GV.query.getDataType().equals("HRV")) {
-                                GV.hrvTable = gson.fromJson(response, new TypeToken<List<dataTable<HRV>>>() {
+                            GV.tablelist = gson.fromJson(response, new TypeToken<tableList>() {
+                            }.getType());
+                            datatpye[0] =  GV.tablelist.getType();
+                            if (datatpye[0].equals("HRV")) {
+                                GV.hrvTable = gson.fromJson(response, new TypeToken<tableList<HRV>>() {
                                 }.getType());
-                                Log.e("debug", "HRV0: " + GV.hrvTable.get(0).getArrayList().get(0).getRR());
-                            } else if (GV.query.getDataType().equals("SPO2")) {
+                                Log.e("debug", "hrvTable: " + GV.hrvTable.getDatatable().get(0).getArrayList().get(0).getRR());
+                            } else if (datatpye[0].equals("SPO2")) {
                                 // TODO new a SPO2 dataTable
                             }
 
                             if (response.indexOf("arrayList") >= 0) {
                                 Log.e("debug", "response.indexOf(\"arrayList\") >= 0");
                             }
-                            GV.mViewPager.setCurrentItem(2);
+                            GV.mViewPager.setCurrentItem(3);
                             return null;
                         }
                     });

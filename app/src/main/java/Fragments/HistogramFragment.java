@@ -3,6 +3,9 @@ package Fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +14,8 @@ import android.widget.ImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
+import Adapter.cardRecyclerViewAdapter;
+import Global.GV;
 import Http.Network_core;
 import pllab.tcmobile.R;
 
@@ -25,28 +30,26 @@ public class HistogramFragment extends Fragment {
      * The fragment argument representing the section number for this
      * fragment.
      */
-    public static final String ARG_SECTION_NUMBER = "section_number";
-    private Context context;
+    private RecyclerView cardRV;
+    private cardRecyclerViewAdapter cardRVAdapter;
+    private Context hisContext;
     private Network_core nCore;
 
-    public HistogramFragment(Context nContext) {
-        context = nContext;
+    public HistogramFragment(Context context) {
+        hisContext = context;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.e("debug", "###onCreateView###");
         View rootView = inflater.inflate(R.layout.fragment_histogram, container, false);
 
-        /*
-         * ImageLoader
-         */
-        ImageView SPO2 = (ImageView) rootView.findViewById(R.id.SPO2_image);
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(rootView.getContext())
-			    .build();
-        ImageLoader imageLoader = ImageLoader.getInstance();
-        imageLoader.init(config);
-        imageLoader.displayImage("http://xenon.ym.edu.tw/spo2/drawspo2.php?xid=00920040&date=10/12&type=chart", SPO2);
+        // card Recycler Vew
+        cardRVAdapter = new cardRecyclerViewAdapter(rootView.getContext());
+        cardRV = rootView.findViewById(R.id.histogram_recyclerView);
+        cardRV.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
+        cardRV.setAdapter(cardRVAdapter);     //設定適配器
 
         return rootView;
     }

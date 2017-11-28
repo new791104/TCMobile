@@ -19,6 +19,7 @@ import com.roughike.bottombar.OnTabSelectListener;
 import Adapter.SectionsPagerAdapter;
 import Global.GV;
 import Http.Network_core;
+import Objects.Dummy;
 import pllab.tcmobile.R;
 
 import static pllab.tcmobile.R.id.bottomBar;
@@ -37,7 +38,8 @@ public class MainActivity extends AppCompatActivity{
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), this);
-        GV.mViewPager = (ViewPager) findViewById(R.id.pager);
+        GV.mViewPager = findViewById(R.id.pager);
+        GV.mViewPager.setScrollingEnabled(false);
         GV.mViewPager.requestDisallowInterceptTouchEvent(false);
         GV.mViewPager.setAdapter(mSectionsPagerAdapter);
 
@@ -75,7 +77,7 @@ public class MainActivity extends AppCompatActivity{
         GV.mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
-                Log.e("debug", "onPageScrolled: "+position);
+                Log.e("debug", "onPageScrolled: " + position);
                 if (!lock) {
                     lock = true;
                     bottomBar.selectTabAtPosition(position);

@@ -1,12 +1,10 @@
 package Global;
 
-import android.support.v4.view.ViewPager;
-
-import java.util.ArrayList;
-
+import Objects.disScrollingPager;
+import Objects.Dummy;
 import Objects.HRV;
 import Objects.SPO2;
-import Objects.dataTable;
+import Objects.tableList;
 import Objects.userQuery;
 
 /**
@@ -16,8 +14,15 @@ import Objects.userQuery;
 public class GV {
     public static userQuery query = new userQuery();
     public static int pagePosition = 0;
-    public static ArrayList<dataTable<HRV>> hrvTable;
-    public static ArrayList<dataTable<SPO2>> sp02Table;
-    public static ViewPager mViewPager;
+    public static tableList tablelist = new Dummy().getDummyTable();
+    public static tableList<HRV> hrvTable;
+    public static tableList<SPO2> spo2Table;
+    public static disScrollingPager mViewPager;
     public static int totalPage = 4;
+
+    public static void checkDataType() {
+        if (tablelist.getType().equals("HRV")) {
+
+        }
+    }
 }
