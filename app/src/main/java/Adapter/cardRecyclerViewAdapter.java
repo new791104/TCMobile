@@ -10,30 +10,24 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.joda.time.LocalDate;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import Global.GV;
 import Objects.HRV;
-import Objects.SPO2;
 import Objects.dataTable;
 import lecho.lib.hellocharts.gesture.ZoomType;
 import lecho.lib.hellocharts.listener.LineChartOnValueSelectListener;
 import lecho.lib.hellocharts.listener.ViewportChangeListener;
 import lecho.lib.hellocharts.model.Axis;
 import lecho.lib.hellocharts.model.AxisValue;
-import lecho.lib.hellocharts.model.ColumnChartData;
 import lecho.lib.hellocharts.model.Line;
 import lecho.lib.hellocharts.model.LineChartData;
 import lecho.lib.hellocharts.model.PointValue;
 import lecho.lib.hellocharts.model.ValueShape;
 import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.util.ChartUtils;
-import lecho.lib.hellocharts.view.ColumnChartView;
 import lecho.lib.hellocharts.view.LineChartView;
 import lecho.lib.hellocharts.view.PreviewLineChartView;
 import pllab.tcmobile.R;
@@ -46,6 +40,7 @@ public class cardRecyclerViewAdapter extends RecyclerView.Adapter<cardRecyclerVi
 
     private boolean[] isDrawed;
     private Context cContext;
+    private int nlines = 0;
 
 
     public static class cardViewHolder extends RecyclerView.ViewHolder {
@@ -92,17 +87,11 @@ public class cardRecyclerViewAdapter extends RecyclerView.Adapter<cardRecyclerVi
         List<PointValue> values = new ArrayList<PointValue>();
 
         LineChartData previewData;
-        LineChartData lineData;
+        LineChartData lineData = new LineChartData();
         Axis axisY = null;
         Axis axisX = null;
 
-        boolean hasLines = true;
-        boolean hasPoints = true;
-        ValueShape shape = ValueShape.CIRCLE;
-        boolean isFilled = false;
-        boolean hasLabels = false;
-        boolean isCubic = false;
-        boolean hasLabelForSelected = false;
+
 
         Log.e("deb", "position: " + position);
         Log.e("deb", "isDrawed: " + Arrays.toString(isDrawed));
@@ -117,23 +106,10 @@ public class cardRecyclerViewAdapter extends RecyclerView.Adapter<cardRecyclerVi
             holder.lineChartView.setOnValueTouchListener(new ValueTouchListener());
 
             if (GV.tablelist.getType().equals("HRV")) {
-                setXAxis_hrv(values, axisValues, axisX, axisY, position);
+                lineData = setValues_hrv(axisValues, position);
             } else if (GV.tablelist.getType().equals("SPO2")) {
                 setXAxis_spo2();
             }
-
-            Line line = new Line(values);
-            line.setColor(ChartUtils.COLOR_GREEN);
-            line.setShape(shape);
-            line.setCubic(isCubic);
-            line.setFilled(isFilled);
-            line.setHasLabels(hasLabels);
-            line.setHasLabelsOnlyForSelected(hasLabelForSelected);
-            line.setHasLines(hasLines);
-            line.setHasPoints(hasPoints);
-
-            List<Line> lines = new ArrayList<Line>();
-            lines.add(line);
 
             axisY = new Axis().setHasLines(true);
             axisY.setName(GV.tablelist.getType());
@@ -141,7 +117,7 @@ public class cardRecyclerViewAdapter extends RecyclerView.Adapter<cardRecyclerVi
             axisX.setMaxLabelChars(4);
             axisX.setName("time");
 
-            lineData = new LineChartData(lines);
+            //lineData = new LineChartData(lines);
             lineData.setAxisXBottom(axisX);
             lineData.setAxisYLeft(axisY);
             lineData.setBaseValue(Float.NEGATIVE_INFINITY);
@@ -151,14 +127,14 @@ public class cardRecyclerViewAdapter extends RecyclerView.Adapter<cardRecyclerVi
             // Better to not modify viewport of any chart directly so create a copy.
             Viewport tempViewport = new Viewport(holder.lineChartView.getMaximumViewport());
             // Make temp viewport smaller.
-            float dx = tempViewport.width() / 4;
             holder.linechartPreView.setCurrentViewportWithAnimation(tempViewport);
             holder.linechartPreView.setZoomType(ZoomType.HORIZONTAL);
             holder.linechartPreView.setPreviewColor(ChartUtils.pickColor());
-            ChartUtils.nextColor();
 
             previewData = new LineChartData(lineData);
-            previewData.getLines().get(0).setColor(ChartUtils.DEFAULT_DARKEN_COLOR);
+            for (int i = 0; i < lineData.getLines().size(); i++) {
+                previewData.getLines().get(i).setColor(ChartUtils.DEFAULT_DARKEN_COLOR);
+            }
             holder.linechartPreView.setLineChartData(previewData);
             ViewportListener viewport = new ViewportListener();
             viewport.setChartView(holder.lineChartView);
@@ -198,48 +174,78 @@ public class cardRecyclerViewAdapter extends RecyclerView.Adapter<cardRecyclerVi
     }
 
     // TODO 整理程式碼
-    private void setXAxis_hrv(List<PointValue> values, List<AxisValue> axisValues, Axis axisX, Axis axisY, int position) {
-        dataTable<HRV> dt = GV.hrvTable.getDatatable().get(0);
+    private LineChartData setValues_hrv(List<AxisValue> axisValues, int position) {
+        List<Line> lines = new ArrayList<Line>();
 
-        for (int i = 0; i < dt.getArrayList().size(); i++) {
+        boolean hasLines = true;
+        boolean hasPoints = true;
+        ValueShape shape = ValueShape.CIRCLE;
+        boolean isFilled = false;
+        boolean hasLabels = false;
+        boolean isCubic = false;
+        boolean hasLabelForSelected = false;
+        Log.e("deb", "GV.hrvTable.getDatatable().size(): " + GV.hrvTable.getDatatable().size());
+        for (int j = 0; j < GV.hrvTable.getDatatable().size(); j++) {
+            List<PointValue> values = new ArrayList<PointValue>();
+            dataTable<HRV> dt = GV.hrvTable.getDatatable().get(j);
+            for (int i = 0; i < dt.getArrayList().size(); i++) {
 
-            switch (position) {
-                case 0:
-                    values.add(new PointValue(i, (float) dt.getArrayList().get(i).getRR()));
-                    break;
-                case 1:
-                    values.add(new PointValue(i, (float) dt.getArrayList().get(i).getSD()));
-                    break;
-                case 2:
-                    values.add(new PointValue(i, (float) dt.getArrayList().get(i).getTP()));
-                    break;
-                case 3:
-                    values.add(new PointValue(i, (float) dt.getArrayList().get(i).getVL()));
-                    break;
-                case 4:
-                    values.add(new PointValue(i, (float) dt.getArrayList().get(i).getLF()));
-                    break;
-                case 5:
-                    values.add(new PointValue(i, (float) dt.getArrayList().get(i).getHF()));
-                    break;
-                case 6:
-                    values.add(new PointValue(i, (float) dt.getArrayList().get(i).getLFP()));
-                    break;
-                case 7:
-                    values.add(new PointValue(i, (float) dt.getArrayList().get(i).getHFP()));
-                    break;
-                case 8:
-                    values.add(new PointValue(i, (float) dt.getArrayList().get(i).getVAR()));
-                    break;
-                case 9:
-                    values.add(new PointValue(i, (float) dt.getArrayList().get(i).getLHR()));
-                    break;
-                case 10:
-                    values.add(new PointValue(i, (float) dt.getArrayList().get(i).getWL()));
-                    break;
+                switch (position) {
+                    case 0:
+                        values.add(new PointValue(i, (float) dt.getArrayList().get(i).getRR()));
+                        break;
+                    case 1:
+                        values.add(new PointValue(i, (float) dt.getArrayList().get(i).getSD()));
+                        break;
+                    case 2:
+                        values.add(new PointValue(i, (float) dt.getArrayList().get(i).getTP()));
+                        break;
+                    case 3:
+                        values.add(new PointValue(i, (float) dt.getArrayList().get(i).getVL()));
+                        break;
+                    case 4:
+                        values.add(new PointValue(i, (float) dt.getArrayList().get(i).getLF()));
+                        break;
+                    case 5:
+                        values.add(new PointValue(i, (float) dt.getArrayList().get(i).getHF()));
+                        break;
+                    case 6:
+                        values.add(new PointValue(i, (float) dt.getArrayList().get(i).getLFP()));
+                        break;
+                    case 7:
+                        values.add(new PointValue(i, (float) dt.getArrayList().get(i).getHFP()));
+                        break;
+                    case 8:
+                        values.add(new PointValue(i, (float) dt.getArrayList().get(i).getVAR()));
+                        break;
+                    case 9:
+                        values.add(new PointValue(i, (float) dt.getArrayList().get(i).getLHR()));
+                        break;
+                    case 10:
+                        values.add(new PointValue(i, (float) dt.getArrayList().get(i).getWL()));
+                        break;
+                }
+                if (j == 0)
+                    axisValues.add(new AxisValue(i));
             }
-            axisValues.add(new AxisValue(i).setLabel(dt.getArrayList().get(i).getTimestamp()));
+
+            Line line = new Line(values);
+            line.setColor(ChartUtils.COLORS[j]);
+            line.setShape(shape);
+            //line.setCubic(isCubic);
+            //line.setFilled(isFilled);
+            //line.setHasLabels(hasLabels);
+            //line.setHasLabelsOnlyForSelected(hasLabelForSelected);
+            line.setHasLines(hasLines);
+            line.setHasPoints(hasPoints);
+
+            line.setPointRadius(3);
+
+            Log.e("deb", "lines size: " + lines.size());
+            lines.add(line);
+            Log.e("deb", "after lines size: " + lines.size());
         }
+        return new LineChartData(lines);
     }
 
     private void setXAxis_spo2() {
@@ -250,7 +256,8 @@ public class cardRecyclerViewAdapter extends RecyclerView.Adapter<cardRecyclerVi
 
         @Override
         public void onValueSelected(int lineIndex, int pointIndex, PointValue value) {
-            Toast.makeText(cContext, "Selected: " + value, Toast.LENGTH_SHORT).show();
+            if (GV.tablelist.getType().equals("HRV"))
+                Toast.makeText(cContext, "Timestamp: " + GV.hrvTable.getDatatable().get(lineIndex).getArrayList().get(pointIndex).getTimestamp() + ", \nY: " + value.getY(), Toast.LENGTH_SHORT).show();
         }
 
         @Override

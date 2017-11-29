@@ -31,6 +31,11 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     }
 
     @Override
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
+    }
+
+    @Override
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a DummySectionFragment (defined as a static inner class
@@ -49,7 +54,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 fragment = new DummySectionFragment();
                 break;
             case 3:
-                fragment = new HistogramFragment(context);
+                fragment = new HistogramFragment();
                 break;
         }
         args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position);

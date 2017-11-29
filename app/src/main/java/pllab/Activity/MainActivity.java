@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 
 import com.roughike.bottombar.BottomBar;
@@ -78,11 +79,26 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onPageSelected(int position) {
                 Log.e("debug", "onPageScrolled: " + position);
+                InputMethodManager imm = (InputMethodManager) getSystemService(MainActivity.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(GV.mViewPager.getWindowToken(), 0); // 強制隱藏鍵盤
                 if (!lock) {
                     lock = true;
                     bottomBar.selectTabAtPosition(position);
                     lock = false;
                 }
+            }
+        });
+
+        GV.mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+            @Override
+            public void onPageSelected(int position) {
+                GV.mViewPager.getAdapter().notifyDataSetChanged();
+            }
+            @Override
+            public void onPageScrollStateChanged(int state) {
             }
         });
 

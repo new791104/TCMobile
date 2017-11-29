@@ -35,8 +35,7 @@ public class HistogramFragment extends Fragment {
     private Context hisContext;
     private Network_core nCore;
 
-    public HistogramFragment(Context context) {
-        hisContext = context;
+    public HistogramFragment() {
     }
 
     @Override
