@@ -16,6 +16,7 @@ import java.util.List;
 
 import Global.GV;
 import Objects.HRV;
+import Objects.SPO2;
 import Objects.dataTable;
 import lecho.lib.hellocharts.gesture.ZoomType;
 import lecho.lib.hellocharts.listener.LineChartOnValueSelectListener;
@@ -108,7 +109,7 @@ public class cardRecyclerViewAdapter extends RecyclerView.Adapter<cardRecyclerVi
             if (GV.tablelist.getType().equals("HRV")) {
                 lineData = setValues_hrv(axisValues, position);
             } else if (GV.tablelist.getType().equals("SPO2")) {
-                setXAxis_spo2();
+                lineData = setValues_spo2(axisValues, position);
             }
 
             axisY = new Axis().setHasLines(true);
@@ -239,7 +240,7 @@ public class cardRecyclerViewAdapter extends RecyclerView.Adapter<cardRecyclerVi
             line.setHasLines(hasLines);
             line.setHasPoints(hasPoints);
 
-            line.setPointRadius(3);
+            line.setPointRadius(1);
 
             Log.e("deb", "lines size: " + lines.size());
             lines.add(line);
@@ -248,8 +249,54 @@ public class cardRecyclerViewAdapter extends RecyclerView.Adapter<cardRecyclerVi
         return new LineChartData(lines);
     }
 
-    private void setXAxis_spo2() {
+    private LineChartData setValues_spo2(List<AxisValue> axisValues, int position) {
+        List<Line> lines = new ArrayList<Line>();
 
+        boolean hasLines = true;
+        boolean hasPoints = true;
+        ValueShape shape = ValueShape.CIRCLE;
+        boolean isFilled = false;
+        boolean hasLabels = false;
+        boolean isCubic = false;
+        boolean hasLabelForSelected = false;
+        Log.e("deb", "GV.spo2Table.getDatatable().size(): " + GV.spo2Table.getDatatable().size());
+        for (int j = 0; j < GV.spo2Table.getDatatable().size(); j++) {
+            List<PointValue> values = new ArrayList<PointValue>();
+            dataTable<SPO2> dt = GV.spo2Table.getDatatable().get(j);
+            for (int i = 0; i < dt.getArrayList().size(); i++) {
+
+                switch (position) {
+                    case 0:
+                        values.add(new PointValue(i, (float) dt.getArrayList().get(i).getSPO2()));
+                        break;
+                    case 1:
+                        values.add(new PointValue(i, (float) dt.getArrayList().get(i).getPULSE()));
+                        break;
+                    case 2:
+                        values.add(new PointValue(i, (float) dt.getArrayList().get(i).getPA()));
+                        break;
+                }
+                if (j == 0)
+                    axisValues.add(new AxisValue(i));
+            }
+
+            Line line = new Line(values);
+            line.setColor(ChartUtils.COLORS[j]);
+            line.setShape(shape);
+            //line.setCubic(isCubic);
+            //line.setFilled(isFilled);
+            //line.setHasLabels(hasLabels);
+            //line.setHasLabelsOnlyForSelected(hasLabelForSelected);
+            line.setHasLines(hasLines);
+            line.setHasPoints(hasPoints);
+
+            line.setPointRadius(1);
+
+            Log.e("deb", "lines size: " + lines.size());
+            lines.add(line);
+            Log.e("deb", "after lines size: " + lines.size());
+        }
+        return new LineChartData(lines);
     }
 
     private class ValueTouchListener implements LineChartOnValueSelectListener {

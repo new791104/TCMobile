@@ -1,7 +1,6 @@
 package Fragments;
 
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Build;
@@ -12,14 +11,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
@@ -28,16 +25,13 @@ import com.google.gson.reflect.TypeToken;
 
 import org.joda.time.LocalDate;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 import Global.GV;
 import Http.Network_core;
 import Objects.HRV;
-import Objects.dataTable;
+import Objects.SPO2;
 import Objects.tableList;
-import pllab.Activity.MainActivity;
 import pllab.tcmobile.R;
 
 /**
@@ -70,22 +64,23 @@ public class SettingFragment extends Fragment {
         final EditText editText_endDate = (EditText) rootView.findViewById(R.id.endDate_editText);
         final Button button_confirm = rootView.findViewById(R.id.confirm_button);
 
-        // Set dataType Spinner
+        // Set dataType Spinner Listener
         ArrayAdapter<CharSequence> typeList = ArrayAdapter.createFromResource(rootView.getContext(),
                 R.array.dataType,
-                android.R.layout.simple_spinner_item);
+                android.R.layout.simple_spinner_dropdown_item);
         final ArrayAdapter<CharSequence>[] deviceIdList = new ArrayAdapter[]{ArrayAdapter.createFromResource(rootView.getContext(),
                 R.array.deviceID_HRV,
-                android.R.layout.simple_spinner_item)};
-        AdapterView.OnItemSelectedListener dataTypeListener = setDataTypeListener(deviceIdList, rootView, spinner_deviceID);
+                android.R.layout.simple_spinner_dropdown_item)};
+        AdapterView.OnItemSelectedListener dataType_Listener = setSpinnerListener(deviceIdList, rootView, spinner_deviceID);
         spinner_dataType.setAdapter(typeList);
-        spinner_dataType.setOnItemSelectedListener(dataTypeListener);
+        spinner_dataType.setOnItemSelectedListener(dataType_Listener);
 
         // init deviceID spinner
         deviceIdList[0] = ArrayAdapter.createFromResource(rootView.getContext(),
                 R.array.deviceID_HRV,
-                android.R.layout.simple_spinner_item);
+                android.R.layout.simple_spinner_dropdown_item);
         spinner_deviceID.setAdapter(deviceIdList[0]);
+
 
         // Set Date
         final Calendar myCalendar = Calendar.getInstance();
@@ -100,7 +95,7 @@ public class SettingFragment extends Fragment {
         return rootView;
     }
 
-    private AdapterView.OnItemSelectedListener setDataTypeListener(final ArrayAdapter<CharSequence>[] deviceIdList, final View rootView, final Spinner spinner_deviceID) {
+    private AdapterView.OnItemSelectedListener setSpinnerListener(final ArrayAdapter<CharSequence>[] deviceIdList, final View rootView, final Spinner spinner_deviceID) {
         return new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView adapterView, View view,
@@ -143,7 +138,7 @@ public class SettingFragment extends Fragment {
         };
     }
 
-   private AdapterView.OnClickListener getCalendarExposeLis() {
+    private AdapterView.OnClickListener getCalendarExposeLis() {
         return new AdapterView.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -220,9 +215,9 @@ public class SettingFragment extends Fragment {
                             if (datatpye[0].equals("HRV")) {
                                 GV.hrvTable = gson.fromJson(response, new TypeToken<tableList<HRV>>() {
                                 }.getType());
-                                Log.e("debug", "hrvTable: " + GV.hrvTable.getDatatable().get(0).getArrayList().get(0).getRR());
                             } else if (datatpye[0].equals("SPO2")) {
-                                // TODO new a SPO2 dataTable
+                                GV.spo2Table = gson.fromJson(response, new TypeToken<tableList<SPO2>>() {
+                                }.getType());
                             }
 
                             if (response.indexOf("arrayList") >= 0) {
