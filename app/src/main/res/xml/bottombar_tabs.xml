@@ -3,21 +3,21 @@
     <tab
         id="@+id/tab_userData"
         icon="@drawable/usersetting_black24"
-        title="Health"
+        title="簡歷"
         barColorWhenSelected="@color/frame"/>
     <tab
         id="@+id/tab_setQuery"
         icon="@drawable/query_black24"
-        title="Query"
+        title="查詢"
         barColorWhenSelected="@color/frame"/>
+    <!--<tab-->
+        <!--id="@+id/tab_healthList"-->
+        <!--icon="@drawable/paperlist_black24"-->
+        <!--title="List"-->
+        <!--barColorWhenSelected="@color/frame"/>-->
     <tab
-        id="@+id/tab_healthList"
-        icon="@drawable/paperlist_black24"
-        title="List"
-        barColorWhenSelected="@color/frame"/>
-    <tab
-        id="@+id/tab_healthReport"
-        icon="@drawable/health_report_black24"
-        title="Histogram"
+        id="@+id/tab_healthDetect"
+        icon="@drawable/heart01_24_black"
+        title="測量"
         barColorWhenSelected="@color/frame"/>
 </tabs>

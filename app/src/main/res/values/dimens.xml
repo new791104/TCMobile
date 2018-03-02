@@ -11,4 +11,9 @@
 
     <dimen name="image_margin">66dp</dimen>
     <dimen name="bottomBar_height">70dp</dimen>
+    <dimen name="actionBar_height">60dp</dimen>
+    <dimen name="mid_textBox_height">1060px</dimen>
+    <dimen name="finish_button_height">240px</dimen>
+    <dimen name="finish_button_width">480px</dimen>
+
 </resources>

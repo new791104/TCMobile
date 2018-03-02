@@ -61,15 +61,18 @@ public class ListFragment extends Fragment implements ViewFactory {
     @Override
     public View makeView(int vertical, int horizontal) {
         Log.e("debug", "vertical: " + vertical);
-        if (vertical == -1) {
-            View rootView = mInflater.inflate(R.layout.fragment_list, mViewGroup, false);
-            return getHRV_text(rootView);
-        }
-        Button btn = new Button(getActivity());
-        btn.setText("Vertical " + vertical);
-        btn.setBackgroundColor(mBgColor);
+//        if (vertical == -1) {
+//            View rootView = mInflater.inflate(R.layout.recycler_layout, mViewGroup, false);
+//            return getHRV_text(rootView);
+//        }
+//        Button btn = new Button(getActivity());
+//        btn.setText("Vertical " + vertical);
+//        btn.setBackgroundColor(mBgColor);
+//
+//        return btn;
 
-        return btn;
+        View rootView = mInflater.inflate(R.layout.item_data_card, mViewGroup, false);
+        return getHRV_text(rootView);
     }
 
     /*

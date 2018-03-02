@@ -6,14 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.zhy.autolayout.AutoLayoutActivity;
-
 import Global.GV;
-import Objects.HRV;
 import pllab.tcmobile.R;
 
 /**
@@ -48,7 +43,7 @@ public class SelectionActivity extends AppCompatActivity implements View.OnClick
 
         switch (v.getId()) {
             case R.id.hrv_ImageButton:
-                GV.query.setDataType("HRV");
+                GV.query_list.setDataType("HRV");
                 OpenActivity(v);
                 break;
         }

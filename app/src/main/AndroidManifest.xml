@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pllab.tcmobile">
 
-    <!--網路權限-->
+    <!-- 網路權限 -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <!--SD卡存取權限-->
+    <!-- SD卡存取權限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -14,6 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+
         <!-- AutoLayout info -->
         <meta-data
             android:name="design_width"
@@ -22,15 +23,17 @@
             android:name="design_height"
             android:value="1920" />
 
-        <activity
-            android:name="pllab.Activity.LoginActivity">
+        <activity android:name="pllab.Activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="pllab.Activity.SelectionActivity"/>
-        <activity android:name="pllab.Activity.MainActivity"/>
+        <activity android:name="pllab.Activity.SelectionActivity" />
+        <activity android:name="pllab.Activity.MainActivity" />
+        <activity android:name="pllab.Activity.HRVdActivity" />
+        <activity android:name="pllab.Activity.HistogramActivity"></activity>
     </application>
 
 </manifest>

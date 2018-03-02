@@ -98,6 +98,28 @@ public class Network_core{
         });
     }
 
+    public void serverUpdateGet(String dataType, String uid, String xid) {
+        Log.e("debug", "in serverUpdateGet");
+        String url = SERVER_HOST + "/update?dataType=" + dataType + "&xid=" + xid + "&uid=" + uid;
+        Log.e("test url", url);
+        mcall = mokHttpClient
+                .get()
+                .url(url)
+                .build();
+
+        mcall.execute(new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                Log.e("error", e.toString());
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                Log.e("ServerReq:", response);
+                mCallback.response(response);
+            }
+        });
+    }
 
     /*
     * CallBack

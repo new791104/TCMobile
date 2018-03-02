@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity{
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private Network_core nCore;
     private boolean lock = false;
+    public BottomBar bottomBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity{
         /*
          * ButtomBar
          */
-        final BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
+        bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelected(@IdRes int tabId) {
@@ -57,11 +58,11 @@ public class MainActivity extends AppCompatActivity{
                     // change your content accordingly.
                     position = 1;
                 }
-                else if (tabId == R.id.tab_healthList) {
+//                else if (tabId == R.id.tab_healthList) {
+//                    position = 2;
+//                }
+                else if (tabId == R.id.tab_healthDetect) {
                     position = 2;
-                }
-                else if (tabId == R.id.tab_healthReport) {
-                    position = 3;
                 }
                 else {
                     position = 0;
@@ -101,6 +102,5 @@ public class MainActivity extends AppCompatActivity{
             public void onPageScrollStateChanged(int state) {
             }
         });
-
     }
 }

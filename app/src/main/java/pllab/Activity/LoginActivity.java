@@ -30,9 +30,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 EditText uid_text = findViewById(R.id.uid_editText);
-                //GV.query.setUserID(uid_text.getText().toString());
-                if (!uid_text.getText().toString().equals(null))
+                if (!uid_text.getText().toString().equals(null)) {
+                    // TODO update userID
+                    //GV.query_list.setUserID(uid_text.getText().toString());
                     OpenMainActivity(v);
+                }
                 else {
                     // TODO user ID could not be null hint(dialog).
                 }

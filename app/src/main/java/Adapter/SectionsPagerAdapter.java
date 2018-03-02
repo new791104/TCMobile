@@ -1,20 +1,19 @@
 package Adapter;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.widget.Toast;
 
 import java.util.Locale;
 
 import Fragments.DataSectionFragment;
+import Fragments.DetectiveFragment;
 import Fragments.DummySectionFragment;
-import Fragments.HistogramFragment;
-import Fragments.SettingFragment;
+import Fragments.ListFragment;
+import Fragments.SettingQueryFragment;
 import Global.GV;
 import pllab.tcmobile.R;
 
@@ -48,13 +47,13 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 fragment = new DummySectionFragment();
                 break;
             case 1:
-                fragment = new SettingFragment();
+                fragment = new SettingQueryFragment();
                 break;
+//            case 2:
+//                fragment = new DummySectionFragment();
+//                break;
             case 2:
-                fragment = new DummySectionFragment();
-                break;
-            case 3:
-                fragment = new HistogramFragment();
+                fragment = new ListFragment(context);
                 break;
         }
         args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position);

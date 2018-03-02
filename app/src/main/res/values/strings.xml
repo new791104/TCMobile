@@ -1,4 +1,5 @@
 <resources>
+    <!-- TODO 有些部分該規畫從 Server 存取 -->
     <string name="app_name">TCMobile</string>
     <string name="title_section1">HRV</string>
     <string name="title_section2">spO2</string>

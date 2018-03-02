@@ -9,13 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-
-import Adapter.cardRecyclerViewAdapter;
-import Global.GV;
+import Adapter.histogram_RecyclerViewAdapter;
 import Http.Network_core;
 import pllab.tcmobile.R;
 
@@ -31,7 +26,7 @@ public class HistogramFragment extends Fragment {
      * fragment.
      */
     private RecyclerView cardRV;
-    private cardRecyclerViewAdapter cardRVAdapter;
+    private histogram_RecyclerViewAdapter cardRVAdapter;
     private Context hisContext;
     private Network_core nCore;
 
@@ -45,7 +40,7 @@ public class HistogramFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_histogram, container, false);
 
         // card Recycler Vew
-        cardRVAdapter = new cardRecyclerViewAdapter(rootView.getContext());
+        cardRVAdapter = new histogram_RecyclerViewAdapter(rootView.getContext());
         cardRV = rootView.findViewById(R.id.histogram_recyclerView);
         cardRV.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
         cardRV.setAdapter(cardRVAdapter);     //設定適配器

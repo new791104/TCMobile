@@ -2,14 +2,15 @@
 <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/setting_layout">
 
     <TextView
         android:id="@+id/setting_title_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/title_margin"
-        android:text="Query Setting"
+        android:text="查詢"
         android:textSize="24sp" />
 
     <com.zhy.autolayout.AutoRelativeLayout
@@ -26,13 +27,13 @@
             android:id="@+id/confirm_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="18dp"
-            android:layout_marginRight="18dp"
-            android:text="查詢"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginBottom="10dp" />
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/endDate_editText"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="40dp"
+            android:text="查詢" />
 
         <EditText
             android:id="@+id/startDate_editText"
@@ -96,7 +97,7 @@
             android:text="Start Date: " />
 
         <Spinner
-            android:id="@+id/deviceID_spinner"
+            android:id="@+id/hrvd_deviceID_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/deviceID_textView"

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="pllab.Activity.HRVdActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/hrvd_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/actionBar_height"
+        android:background="@color/frame"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"/>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/hrvd_edge"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mid_textBox_height"
+        android:layout_below="@id/hrvd_toolbar"
+        android:background="@drawable/edge"
+        android:layout_margin="@dimen/textView_margin">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="完成後請按 測量完畢" />
+
+        <TextView
+            android:id="@+id/hrvd_deviceID_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="67dp"
+            android:layout_toLeftOf="@+id/textView"
+            android:layout_toStartOf="@+id/textView"
+            android:text="Device ID: " />
+
+        <Spinner
+            android:id="@+id/hrvd_deviceID_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView"
+            android:layout_alignStart="@+id/textView"
+            android:layout_alignTop="@+id/hrvd_deviceID_textView" />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <Button
+        android:id="@+id/finish_button"
+        android:layout_width="@dimen/finish_button_width"
+        android:layout_height="@dimen/finish_button_height"
+        android:layout_below="@+id/hrvd_edge"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/title_margin"
+        android:text="測量完畢!" />
+
+</com.zhy.autolayout.AutoRelativeLayout>
