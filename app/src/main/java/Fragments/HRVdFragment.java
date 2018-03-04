@@ -1,67 +1,59 @@
-package pllab.Activity;
+package Fragments;
 
+import android.content.Context;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.TextView;
+
+import com.zhy.autolayout.AutoRelativeLayout;
 
 import Global.GV;
 import Http.Network_core;
 import cn.refactor.lib.colordialog.PromptDialog;
 import pllab.tcmobile.R;
 
-public class HRVdActivity extends AppCompatActivity {
+/**
+ * Created by cminer on 2018/3/2.
+ */
 
-    private Network_core nCore = new Network_core(this);
+public class HRVdFragment extends Fragment {
+    private Context context;
+    private Network_core nCore = new Network_core(getContext());
+
+    public HRVdFragment(Context c) {
+        context = c;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hrvd);
-        // 關閉系統狀態列
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        // 客製 ToolBar
-        Toolbar toolbar = findViewById(R.id.hrvd_toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-
-        TextView toolbar_title = toolbar.findViewById(R.id.toolbar_title);
-        toolbar_title.setText("HRV");
-        toolbar.setNavigationOnClickListener(
-                new View.OnClickListener() {
-                     @Override
-                     public void onClick(View view) {
-                         finish();
-                     }
-                 }
-        );
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        Log.e("debug", "###onCreateView###");
+        AutoRelativeLayout autoRelativeLayout = (AutoRelativeLayout) inflater.inflate(R.layout.activity_hrvd, container);
 
         // 製作 update list
         GV.update_list.setDataType("HRV");
         GV.update_list.setUserID(GV.query_list.getUserID());
 
-        Spinner spinner_deviceID = findViewById(R.id.hrvd_deviceID_spinner);
+        Spinner spinner_deviceID = container.findViewById(R.id.hrvd_deviceID_spinner);
         ArrayAdapter<CharSequence> deviceIdList;
-        deviceIdList = ArrayAdapter.createFromResource(this, R.array.deviceID_HRV, android.R.layout.simple_spinner_dropdown_item);
+        deviceIdList = ArrayAdapter.createFromResource(context, R.array.deviceID_HRV, android.R.layout.simple_spinner_dropdown_item);
         AdapterView.OnItemSelectedListener deviceID_Listener = setSpinnerListener();
         spinner_deviceID.setAdapter(deviceIdList);
         spinner_deviceID.setOnItemSelectedListener(deviceID_Listener);
 
-        Button finish_but = findViewById(R.id.finish_button);
+        Button finish_but = container.findViewById(R.id.finish_button);
         finish_but.setOnClickListener(setFinishButListener());
 
+        return autoRelativeLayout;
     }
 
     private AdapterView.OnItemSelectedListener setSpinnerListener() {

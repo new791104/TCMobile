@@ -2,11 +2,13 @@ package Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -41,8 +43,14 @@ public class HistogramFragment extends Fragment {
 
         // card Recycler Vew
         cardRVAdapter = new histogram_RecyclerViewAdapter(rootView.getContext());
+
+        // 關閉滑動效果
+        CustomLinearLayoutManager linearLayoutManager = new CustomLinearLayoutManager(getContext());
+        linearLayoutManager.setScrollEnabled(false);
+
         cardRV = rootView.findViewById(R.id.histogram_recyclerView);
-        cardRV.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
+        cardRV.setLayoutManager(linearLayoutManager);
+
         cardRV.setAdapter(cardRVAdapter);     //設定適配器
 
         return rootView;

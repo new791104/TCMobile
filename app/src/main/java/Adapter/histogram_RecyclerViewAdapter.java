@@ -291,6 +291,7 @@ public class histogram_RecyclerViewAdapter extends RecyclerView.Adapter<histogra
                     hex = "0" + hex;
                 }
             }
+            Log.e("deb", "Random Color is " + hex);
             colorList.add(Color.parseColor("#" + hex));
         }
         return colorList;

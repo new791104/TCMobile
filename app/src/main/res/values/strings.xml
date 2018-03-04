@@ -1,5 +1,9 @@
 <resources>
     <!-- TODO 有些部分該規畫從 Server 存取 -->
+    <integer name="main_page_size">
+        3
+    </integer>
+
     <string name="app_name">TCMobile</string>
     <string name="title_section1">HRV</string>
     <string name="title_section2">spO2</string>

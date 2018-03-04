@@ -1,33 +1,24 @@
 package pllab.Activity;
 
 import android.support.annotation.IdRes;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
 
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
-import Adapter.SectionsPagerAdapter;
+import Adapter.SelectMainPagerAdapter;
 import Global.GV;
 import Http.Network_core;
-import Objects.Dummy;
 import pllab.tcmobile.R;
-
-import static pllab.tcmobile.R.id.bottomBar;
 
 public class MainActivity extends AppCompatActivity{
 
-    private SectionsPagerAdapter mSectionsPagerAdapter;
+    private SelectMainPagerAdapter mSelectMainPagerAdapter;
     private Network_core nCore;
     private boolean lock = false;
     public BottomBar bottomBar;
@@ -36,17 +27,17 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //關閉系統狀態列
+        // 關閉系統狀態列
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), this);
+        mSelectMainPagerAdapter = new SelectMainPagerAdapter(getSupportFragmentManager(), this);
         GV.mViewPager = findViewById(R.id.pager);
         GV.mViewPager.setScrollingEnabled(false);
         GV.mViewPager.requestDisallowInterceptTouchEvent(false);
-        GV.mViewPager.setAdapter(mSectionsPagerAdapter);
+        GV.mViewPager.setAdapter(mSelectMainPagerAdapter);
 
         /*
-         * ButtomBar
+         * BottomBar
          */
         bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {

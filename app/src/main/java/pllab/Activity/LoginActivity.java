@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
         Log.e("debug", "###LoginActivity onCreate###");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        //關閉系統狀態列
+        // 關閉系統狀態列
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         Button login_button = findViewById(R.id.login_button);

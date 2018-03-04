@@ -50,8 +50,7 @@
         android:background="@color/frame"
         android:minHeight="@dimen/bottomBar_height"
         app:bb_tabXmlResource="@xml/bottombar_tabs"
-        android:layout_gravity="bottom"
-        app:bb_behavior="underNavbar|shy"/>
+        android:layout_gravity="bottom"/>
 
 
 </android.support.design.widget.CoordinatorLayout>

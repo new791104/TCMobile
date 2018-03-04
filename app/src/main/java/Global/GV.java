@@ -27,6 +27,5 @@ public class GV {
     public static tableList<HRV> hrvTable = new Dummy().getDummyTable();
     public static tableList<SPO2> spo2Table = new Dummy().getDummyTable();
     public static disScrollingPager mViewPager;
-    public static int totalPage = 3;
 
 }

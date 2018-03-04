@@ -6,21 +6,16 @@
     android:layout_height="match_parent"
     tools:context="pllab.Activity.HRVdActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/hrvd_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/actionBar_height"
-        android:background="@color/frame"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"/>
+    <include android:id="@+id/hrvd_toolbar"
+        layout="@layout/toolbar"/>
 
     <com.zhy.autolayout.AutoRelativeLayout
         android:id="@+id/hrvd_edge"
         android:layout_width="match_parent"
         android:layout_height="@dimen/mid_textBox_height"
-        android:layout_below="@id/hrvd_toolbar"
-        android:background="@drawable/edge"
-        android:layout_margin="@dimen/textView_margin">
+        android:layout_below="@+id/hrvd_toolbar"
+        android:layout_margin="@dimen/textView_margin"
+        android:background="@drawable/edge">
 
         <TextView
             android:id="@+id/textView"

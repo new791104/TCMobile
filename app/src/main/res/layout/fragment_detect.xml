@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/title_margin"
         android:text="測量"
-        android:textSize="24sp" />
+        android:textSize="@dimen/titleTextSize" />
 
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"

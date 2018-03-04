@@ -52,6 +52,7 @@ public class ListFragment extends Fragment implements ViewFactory {
                 .inflate(R.layout.fragment_infinite_vertical, container, false);
         verticalPager.setFactory(this);
         verticalPager.instantiate();
+        verticalPager.canScrollVertically(0);
         return verticalPager;
     }
 
@@ -65,14 +66,14 @@ public class ListFragment extends Fragment implements ViewFactory {
 //            View rootView = mInflater.inflate(R.layout.recycler_layout, mViewGroup, false);
 //            return getHRV_text(rootView);
 //        }
-//        Button btn = new Button(getActivity());
-//        btn.setText("Vertical " + vertical);
-//        btn.setBackgroundColor(mBgColor);
-//
-//        return btn;
+        Button btn = new Button(getActivity());
+        btn.setText("Vertical " + vertical);
+        btn.setBackgroundColor(mBgColor);
 
-        View rootView = mInflater.inflate(R.layout.item_data_card, mViewGroup, false);
-        return getHRV_text(rootView);
+        return btn;
+
+//        View rootView = mInflater.inflate(R.layout.item_data_card, mViewGroup, false);
+//        return getHRV_text(rootView);
     }
 
     /*
