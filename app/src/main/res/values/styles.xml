@@ -12,15 +12,15 @@
     </style>
 
     <!--<style name="MyTheme" parent="@android:style/Theme.Holo.Light">-->
-        <!--<item name="android:actionBarStyle">@style/MyTheme.ActionBarStyle</item>-->
+    <!--<item name="android:actionBarStyle">@style/MyTheme.ActionBarStyle</item>-->
     <!--</style>-->
 
     <!--<style name="MyTheme.ActionBarStyle" parent="@android:style/Widget.Holo.Light.ActionBar">-->
-        <!--<item name="android:titleTextStyle">@style/MyTheme.ActionBar.TitleTextStyle</item>-->
+    <!--<item name="android:titleTextStyle">@style/MyTheme.ActionBar.TitleTextStyle</item>-->
     <!--</style>-->
 
     <!--<style name="MyTheme.ActionBar.TitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">-->
-        <!--<item name="android:textColor">@color/colorBlack</item>-->
+    <!--<item name="android:textColor">@color/colorBlack</item>-->
     <!--</style>-->
 
     <style name="AppTheme.NoActionBar">
@@ -43,6 +43,10 @@
         <item name="android:shadowDy">-3.5</item>
         <item name="android:shadowRadius">2</item>
     </style>
+
+    <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>

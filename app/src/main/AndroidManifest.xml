@@ -30,10 +30,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="pllab.Activity.SelectionActivity" />
         <activity android:name="pllab.Activity.MainActivity" />
         <activity android:name="pllab.Activity.HRVdActivity" />
-        <activity android:name="pllab.Activity.HistogramActivity"></activity>
+        <activity android:name="pllab.Activity.HistogramActivity" />
+        <activity
+            android:name="pllab.Activity.Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

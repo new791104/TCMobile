@@ -13,12 +13,58 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/lineChart_height"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/histo_toolbar"
-        android:id="@+id/activity_autoRelativeLayout">
+        android:id="@+id/histo_autoRelativeLayout">
+    </com.zhy.autolayout.AutoRelativeLayout>
 
+    <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/context"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/histo_autoRelativeLayout"
+        android:id="@+id/lineHint_autoRelativeLayout">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:text="這裡會顯示某一點的資訊"
+            android:layout_marginTop="@dimen/textView_margin"
+            android:layout_marginLeft="@dimen/textView_margin"
+            android:layout_marginRight="@dimen/textView_margin"
+
+            android:background="@drawable/edge"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lineHint_textView"
+            android:textSize="@dimen/textSize_mid"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_margin="@dimen/box_margin"
+            android:background="@drawable/edge"
+            android:layout_below="@+id/lineHint_textView"
+            android:id="@+id/lineHint_recyclerView"
+            android:layout_width="600px"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_margin="@dimen/box_margin"
+            android:layout_marginLeft="700px"
+            android:background="@drawable/edge"
+            android:layout_below="@+id/lineHint_textView"
+            android:id="@+id/paramHint_recyclerView"
+            android:layout_width="350px"
+            android:layout_height="match_parent"
+
+            android:layout_alignLeft="@id/lineHint_autoRelativeLayout"/>
 
     </com.zhy.autolayout.AutoRelativeLayout>
 

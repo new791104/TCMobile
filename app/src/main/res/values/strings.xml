@@ -4,6 +4,7 @@
         3
     </integer>
 
+
     <string name="app_name">TCMobile</string>
     <string name="title_section1">HRV</string>
     <string name="title_section2">spO2</string>
@@ -42,5 +43,6 @@
         <item>Pulse</item>
         <item>Pa</item>
     </string-array>
+    <string name="title_activity_main2">Main2Activity</string>
 
 </resources>

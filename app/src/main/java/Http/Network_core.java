@@ -47,7 +47,7 @@ public class Network_core{
      * @return    void
      */
 
-    public void serverQueryPost(String dataType, String uid, String xid, LocalDate startDate, LocalDate endDate) {
+    public void serverQueryPost(String dataType, String uid, String deviceID, LocalDate startDate, LocalDate endDate) {
         Log.e("debug", "in ServerReq");
         String url = SERVER_HOST + "/query";
         Log.e("test url", url);
@@ -56,7 +56,7 @@ public class Network_core{
                 .url(url)
                 .addParams("dataType", dataType)
                 .addParams("uid", uid)
-                .addParams("xid", xid)
+                .addParams("deviceID", deviceID)
                 .addParams("startDate", startDate.toString())
                 .addParams("endDate", endDate.toString())
                 .build();
@@ -75,9 +75,9 @@ public class Network_core{
         });
     }
 
-    public void serverQueryGet(String dataType, String uid, String xid, LocalDate startDate, LocalDate endDate) {
+    public void serverQueryGet(String dataType, String uid, String deviceID, LocalDate startDate, LocalDate endDate) {
         Log.e("debug", "in ServerReq");
-        String url = SERVER_HOST + "/query?dataType=" + dataType + "&xid=" + xid + "&uid=" + uid + "&startDate=" + startDate + "&endDate=" + endDate;
+        String url = SERVER_HOST + "/query?dataType=" + dataType + "&deviceID=" + deviceID + "&uid=" + uid + "&startDate=" + startDate + "&endDate=" + endDate;
         Log.e("test url", url);
         mcall = mokHttpClient
                 .get()
@@ -98,9 +98,9 @@ public class Network_core{
         });
     }
 
-    public void serverUpdateGet(String dataType, String uid, String xid) {
+    public void serverUpdateGet(String dataType, String uid, String deviceID) {
         Log.e("debug", "in serverUpdateGet");
-        String url = SERVER_HOST + "/update?dataType=" + dataType + "&xid=" + xid + "&uid=" + uid;
+        String url = SERVER_HOST + "/update?dataType=" + dataType + "&deviceID=" + deviceID + "&uid=" + uid;
         Log.e("test url", url);
         mcall = mokHttpClient
                 .get()

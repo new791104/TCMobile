@@ -59,17 +59,17 @@ public class histogram_RecyclerViewAdapter extends RecyclerView.Adapter<histogra
             cv = itemView.findViewById(R.id.data_cv);
             textView_dataField = itemView.findViewById(R.id.dataField_textView);
             lineChartView = itemView.findViewById(R.id.lineChart);
-            linechartPreView = itemView.findViewById(R.id.lineChart_preview);
         }
     }
 
 
     /* constructor */
-    public histogram_RecyclerViewAdapter(Context context) {
+    public histogram_RecyclerViewAdapter(Context context, List<Integer> colorlist) {
         Log.e("deb", "###histogram_RecyclerViewAdapter###");
         isDrawed = new boolean[GV.tablelist.getDataFields().length];
         Arrays.fill(isDrawed, false);
         Log.e("deb", "isDrawed: " + Arrays.toString(isDrawed));
+        colorList = colorlist;
         cContext = context;
     }
 
@@ -89,7 +89,8 @@ public class histogram_RecyclerViewAdapter extends RecyclerView.Adapter<histogra
          */
 
         // 生成隨機顏色
-        colorList = randomColor(GV.tablelist.getDatatable().size());
+        // TODO: 之後要讓每一張 HISTOGRAM 線條顏色所代表的時間相同
+//        colorList = randomColor(GV.tablelist.getDatatable().size());
 
         List<AxisValue> axisValues = new ArrayList<AxisValue>();
         List<PointValue> values = new ArrayList<PointValue>();
@@ -117,7 +118,7 @@ public class histogram_RecyclerViewAdapter extends RecyclerView.Adapter<histogra
             }
 
             axisY = new Axis().setHasLines(true);
-            axisY.setName(GV.tablelist.getType());
+            axisY.setName("");
             axisX = new Axis(axisValues).setHasLines(true);
             axisX.setMaxLabelChars(4);
             axisX.setName("time");
@@ -127,23 +128,6 @@ public class histogram_RecyclerViewAdapter extends RecyclerView.Adapter<histogra
             lineData.setAxisYLeft(axisY);
             lineData.setBaseValue(Float.NEGATIVE_INFINITY);
             holder.lineChartView.setLineChartData(lineData);
-
-            //previewXY(holder.lineChartView, holder.linechartPreView);
-            // Better to not modify viewport of any chart directly so create a copy.
-            Viewport tempViewport = new Viewport(holder.lineChartView.getMaximumViewport());
-            // Make temp viewport smaller.
-            holder.linechartPreView.setCurrentViewportWithAnimation(tempViewport);
-            holder.linechartPreView.setZoomType(ZoomType.HORIZONTAL);
-            holder.linechartPreView.setPreviewColor(ChartUtils.pickColor());
-
-            previewData = new LineChartData(lineData);
-            for (int i = 0; i < lineData.getLines().size(); i++) {
-                previewData.getLines().get(i).setColor(ChartUtils.DEFAULT_DARKEN_COLOR);
-            }
-            holder.linechartPreView.setLineChartData(previewData);
-            ViewportListener viewport = new ViewportListener();
-            viewport.setChartView(holder.lineChartView);
-            holder.linechartPreView.setViewportChangeListener(viewport);
 
         }
     }
@@ -287,7 +271,7 @@ public class histogram_RecyclerViewAdapter extends RecyclerView.Adapter<histogra
             int num = random.nextInt(16777215);
             String hex = Integer.toHexString(num);
             if (hex.length() < 6) {
-                for (int j = 0; j < 6 - hex.length(); j++) {
+                for (int j = 0; j <= 6 - hex.length(); j++) {
                     hex = "0" + hex;
                 }
             }
@@ -351,8 +335,12 @@ public class histogram_RecyclerViewAdapter extends RecyclerView.Adapter<histogra
 
         @Override
         public void onValueSelected(int lineIndex, int pointIndex, PointValue value) {
-            if (GV.tablelist.getType().equals("HRV"))
+            if (GV.tablelist.getType().equals("HRV")) {
                 Toast.makeText(cContext, "Timestamp: " + GV.hrvTable.getDatatable().get(lineIndex).getArrayList().get(pointIndex).getTimestamp() + ", \nY: " + value.getY(), Toast.LENGTH_SHORT).show();
+            }
+            else if (GV.tablelist.getType().equals("SPO2")) {
+
+            }
         }
 
         @Override
@@ -380,5 +368,10 @@ public class histogram_RecyclerViewAdapter extends RecyclerView.Adapter<histogra
             this.lineChartView = lineChartView;
         }
 
+    }
+
+    public void setPosition(int position) {
+//        notifyItemChanged(position);
+//        cardViewHolder
     }
 }
