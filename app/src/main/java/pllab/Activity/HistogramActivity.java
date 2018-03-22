@@ -4,6 +4,8 @@ import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,6 +23,7 @@ import java.util.List;
 import java.util.Random;
 
 import Adapter.SelectMainPagerAdapter;
+import Adapter.paramHint_RecyclerViewAdapter;
 import Fragments.HistogramFragment;
 import Global.GV;
 import Objects.disScrollingPager;
@@ -28,6 +31,7 @@ import pllab.tcmobile.R;
 
 public class HistogramActivity extends AppCompatActivity {
     private SelectMainPagerAdapter mSelectMainPagerAdapter;
+    //private
     disScrollingPager hisViewPager;
     private LayoutInflater mInflater;
     private ViewGroup mViewGroup;
@@ -56,14 +60,22 @@ public class HistogramActivity extends AppCompatActivity {
                 }
         );
 
-
         /*
-            在 Activity 中引入 Fragment 的方法: 呼叫FragmentManager
+            在 Activity 中引入 Fragment 的方法: 呼叫 FragmentManager
+            在此引入 Histogram RecyclerView
          */
-        Fragment fragment = new HistogramFragment(randomColor(GV.tablelist.getDatatable().size()));
+        final HistogramFragment hisFragment = new HistogramFragment(randomColor(GV.tablelist.getDatatable().size()));
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.histo_autoRelativeLayout, fragment)
+                .add(R.id.histo_autoRelativeLayout, hisFragment)
                 .commit();
+
+        final RecyclerView paramRV = (RecyclerView) findViewById(R.id.paramHint_recyclerView);
+        // use a linear layout manager
+        RecyclerView.LayoutManager mLayoutManager;
+        mLayoutManager = new LinearLayoutManager(this);
+        paramRV.setLayoutManager(mLayoutManager);
+        paramHint_RecyclerViewAdapter paramRVA = new paramHint_RecyclerViewAdapter(hisFragment);
+        paramRV.setAdapter(paramRVA);
 
         // ExpandableSelector
         //initializeExpandableSelector();

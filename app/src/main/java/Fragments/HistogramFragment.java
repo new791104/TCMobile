@@ -62,4 +62,8 @@ public class HistogramFragment extends Fragment {
 
         return rootView;
     }
+
+    public void setPosition(int position) {
+        cardRV.scrollToPosition(position);
+    }
 }
